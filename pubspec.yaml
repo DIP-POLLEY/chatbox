@@ -1,7 +1,7 @@
 name: chatbox
 description: Helps creating chatboxes for mobile applications
 version: 0.0.1
-homepage:
+homepage: https://github.com/DIP-POLLEY/chatbox
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
