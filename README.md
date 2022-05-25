@@ -17,10 +17,10 @@ Provides simple UI design for chat applications. Developers can focus more on th
 ## Features
 
 ### Sending Message
-<img src="https://github.com/DIP-POLLEY/chatbox/blob/main/img.png"/>
+<img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img.png"/>
 
 ### Recieving Message
-<img src="https://github.com/DIP-POLLEY/chatbox/blob/main/img_1.png"/>
+<img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img_1.png"/>
 
 
 ## Getting started
