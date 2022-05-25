@@ -1,6 +1,6 @@
 name: chatbox
-description: Helps creating chatboxes for mobile applications
-version: 0.0.2
+description: Helps creating chatboxes for mobile applications. Provides simple UI design for chat applications. Developers can focus more on the chat functionality rather than creating unique UI.
+version: 0.0.3
 homepage: https://github.com/DIP-POLLEY/chatbox
 
 environment:
