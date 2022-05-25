@@ -16,24 +16,32 @@ know whether this package might be useful for them.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Provides simple UI design for chat applications. Developers can focus more on the chat funtionality rather than creating unique UI.
+### Sending Message
+![img.png](img.png)
+
+### Recieving Message
+![img_1.png](img_1.png)
+
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### Requirement
+`Dart >=2.17.0 < 3.0.0` and `Flutter >=1.17.0`
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+This is how you can call the chatbox and use the UI.
 
 ```dart
-const like = 'sample';
+const ChatBox(
+message: "Text message here",
+recieved: false,
+messageColor: Colors.greenAccent,
+textColor: Colors.black,//optional
+);
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+You are allowed to raise an issue create a solution and raise a PR. If the issue and the solution are valid it will be merged.
