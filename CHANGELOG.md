@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Fixing documentation images
+
 ## 0.0.3
 
 * Updating documentation, adding example

@@ -32,10 +32,21 @@ Provides simple UI design for chat applications. Developers can focus more on th
 
 This is how you can call the chatbox and use the UI.
 
+### Sending
 ```dart
 const ChatBox(
 message: "Text message here",
 recieved: false,
+messageColor: Colors.greenAccent,
+textColor: Colors.black,//optional
+);
+```
+
+### Receiveing
+```dart
+const ChatBox(
+message: "Text message here",
+recieved: true,
 messageColor: Colors.greenAccent,
 textColor: Colors.black,//optional
 );
