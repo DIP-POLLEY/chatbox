@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* Updating documentation
+* Initial release and updating documentation
