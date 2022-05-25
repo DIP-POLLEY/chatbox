@@ -11,12 +11,11 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Provides simple UI design for chat applications. Developers can focus more on the chat functionality rather than creating unique UI.
+
 
 ## Features
 
-Provides simple UI design for chat applications. Developers can focus more on the chat funtionality rather than creating unique UI.
 ### Sending Message
 ![img.png](img.png)
 
