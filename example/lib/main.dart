@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
       body: ChatBox(
         message: "Text message here",
-        recieved: true,
+        recieved: false,
         chatBoxColor: Colors.greenAccent,
         textColor: Colors.black,
       ),

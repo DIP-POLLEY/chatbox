@@ -1,12 +1,9 @@
-import 'package:http/http.dart' as http;
-
-
 import 'package:flutter/material.dart';
 
 class ChatBox extends StatefulWidget {
   const ChatBox({
     Key? key,
-    this.message="",
+    required this.message,
     required this.recieved,
     required this.chatBoxColor,
     this.textColor = Colors.black,
@@ -26,30 +23,7 @@ class _ChatBoxState extends State<ChatBox> {
   String _message = "No message was sent";
   Color _chatBoxColor = Colors.greenAccent;
   Color _textColor = Colors.greenAccent;
-  String _imageURL='https://docs.flutter.dev/assets/images/dash/dash-fainting.gif';
-  bool checknetwork=false;
   final now = DateTime.now();
-
-
-  void checkconnection() async{
-    final response = await http.get(Uri.parse(_imageURL));
-
-
-      if ( response.statusCode == 200) {
-
-        setState(() {
-          checknetwork = true;
-        });
-      }
-      else
-        {
-          setState(() {
-            checknetwork = false;
-          });
-        }
-
-
-  }
 
   @override
   void initState() {
@@ -58,7 +32,6 @@ class _ChatBoxState extends State<ChatBox> {
     _message = widget.message;
     _chatBoxColor = widget.chatBoxColor;
     _textColor = widget.textColor;
-    checkconnection();
   }
 
   @override
@@ -84,37 +57,10 @@ class _ChatBoxState extends State<ChatBox> {
             ),
           ),
           child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: _imageURL!=""?
-              ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                    child: !checknetwork?
-                    Image.asset(
-                        "packages/chatbox/assets/loading.gif",
-                      height: 20,
-                    )
-                        :Image.network(
-                        _imageURL,
-                      loadingBuilder: (BuildContext context, Widget child,ImageChunkEvent? loadingProgress)
-                      {
-                        if (loadingProgress == null) return child;
-                        return SizedBox(
-                          height: 100,
-                          child: Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
-                                  : null,
-                            ),
-                          ),
-                        );
-                      }
-                    ),
-                  )
-                  :RichText(
+              padding: const EdgeInsets.all(10.0),
+              child: RichText(
                 text: TextSpan(
-                  text: _message!=""?"$_message\n":"\n",
+                  text: "$_message\n",
                   style: TextStyle(
                     color: _textColor,
                     fontWeight: FontWeight.bold,
@@ -170,8 +116,7 @@ class _ChatBoxState extends State<ChatBox> {
                         )),
                   ],
                 ),
-              )
-          ),
+              )),
         ),
       ),
     );
