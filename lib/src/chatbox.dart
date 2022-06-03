@@ -113,8 +113,9 @@ class _ChatBoxState extends State<ChatBox> {
                                     : Image.network(_imageURL, loadingBuilder:
                                         (BuildContext context, Widget child,
                                             ImageChunkEvent? loadingProgress) {
-                                        if (loadingProgress == null)
+                                        if (loadingProgress == null) {
                                           return child;
+                                        }
                                         return SizedBox(
                                           height: 100,
                                           child: Center(
@@ -180,8 +181,9 @@ class _ChatBoxState extends State<ChatBox> {
                                     : Image.network(_imageURL, loadingBuilder:
                                         (BuildContext context, Widget child,
                                             ImageChunkEvent? loadingProgress) {
-                                        if (loadingProgress == null)
+                                        if (loadingProgress == null) {
                                           return child;
+                                        }
                                         return SizedBox(
                                           height: 100,
                                           child: Center(
