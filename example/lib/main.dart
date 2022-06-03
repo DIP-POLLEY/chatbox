@@ -8,9 +8,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -32,13 +34,37 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return  SafeArea(
         child: Scaffold(
-      body: ChatBox(
-        message: "Text message here",
-        recieved: true,
-        chatBoxColor: Colors.greenAccent,
-        textColor: Colors.black,
+      body: Column(
+        children: const [
+          ChatBox(
+            message: "Hi",
+            recieved: false,
+            chatBoxColor: Colors.greenAccent,
+            textColor: Colors.black,
+          ),
+          ChatBox(
+            message: "Hello",
+            recieved: true,
+            chatBoxColor: Colors.greenAccent,
+            textColor: Colors.black,
+          ),
+          ChatBox(
+            message: "Now we can share images also",
+            imageURL: "https://picsum.photos/250?image=9",
+            recieved: false,
+            chatBoxColor: Colors.greenAccent,
+            textColor: Colors.black,
+          ),
+          ChatBox(
+            message: "Yes Gifs are supported now",
+            imageURL: "https://docs.flutter.dev/assets/images/dash/dash-fainting.gif",
+            recieved: true,
+            chatBoxColor: Colors.greenAccent,
+            textColor: Colors.black,
+          ),
+        ],
       ),
     ));
   }

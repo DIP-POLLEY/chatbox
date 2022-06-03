@@ -16,6 +16,9 @@ Provides simple UI design for chat applications. Developers can focus more on th
 
 ## Features
 
+###DemoScreen
+<img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img_2.png"/>
+
 ### Sending Message
 <img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img.png"/>
 
