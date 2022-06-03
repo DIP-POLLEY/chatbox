@@ -8,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
         child: Scaffold(
       body: Column(
         children: const [
@@ -59,7 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ChatBox(
             message: "Yes Gifs are supported now",
-            imageURL: "https://docs.flutter.dev/assets/images/dash/dash-fainting.gif",
+            imageURL:
+                "https://docs.flutter.dev/assets/images/dash/dash-fainting.gif",
             recieved: true,
             chatBoxColor: Colors.greenAccent,
             textColor: Colors.black,

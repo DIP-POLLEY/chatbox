@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Sharing Images support
+
 ## 0.0.4
 
 * Fixing documentation images

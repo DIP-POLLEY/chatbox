@@ -16,7 +16,7 @@ Provides simple UI design for chat applications. Developers can focus more on th
 
 ## Features
 
-###DemoScreen
+### DemoScreen
 <img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img_2.png"/>
 
 ### Sending Message
@@ -39,20 +39,22 @@ This is how you can call the chatbox and use the UI.
 ```dart
 const ChatBox(
 message: "Text message here",
+imageURL: "https://picsum.photos/250?image=9",//Sending GIF or Image
 recieved: false,
-messageColor: Colors.greenAccent,
-textColor: Colors.black,//optional
-);
+chatBoxColor: Colors.greenAccent,
+textColor: Colors.black,
+),
 ```
 
-### Receiveing
+### Receiving
 ```dart
 const ChatBox(
 message: "Text message here",
+imageURL:"https://docs.flutter.dev/assets/images/dash/dash-fainting.gif",//Receiving GIF or Image
 recieved: true,
-messageColor: Colors.greenAccent,
-textColor: Colors.black,//optional
-);
+chatBoxColor: Colors.greenAccent,
+textColor: Colors.black,
+),
 ```
 
 ## Additional information
