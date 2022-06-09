@@ -70,7 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
             chatBoxColor: Colors.greenAccent,
             textColor: Colors.black,
           ),
-
           SizedBox(
             height: 30,
           )

@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Adding hyperlink support
+
 ## 0.0.5
 
 * Sharing Images support

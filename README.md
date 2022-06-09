@@ -18,6 +18,8 @@ Provides simple UI design for chat applications. Developers can focus more on th
 
 ### DemoScreen
 <img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img_2.png"/>
+<br>
+<img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img_3.png"/>
 
 ### Sending Message
 <img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img.png"/>
@@ -56,6 +58,17 @@ chatBoxColor: Colors.greenAccent,
 textColor: Colors.black,
 ),
 ```
+
+### Hyperlinks
+```dart
+const ChatBox(
+message: "https://pub.dev/packages/chatbox",
+recieved: false,
+chatBoxColor: Colors.greenAccent,
+textColor: Colors.black,
+),
+```
+
 
 ## Additional information
 

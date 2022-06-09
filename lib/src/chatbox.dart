@@ -32,8 +32,6 @@ class _ChatBoxState extends State<ChatBox> {
   String _imageURL = "";
   bool checknetwork = false;
 
-
-
   final now = DateTime.now();
 
   void checkconnection() async {
@@ -64,6 +62,7 @@ class _ChatBoxState extends State<ChatBox> {
       });
     }
   }
+
   @override
   void initState() {
     super.initState();
@@ -76,7 +75,6 @@ class _ChatBoxState extends State<ChatBox> {
       checkconnection();
     }
     verifyconditions();
-
   }
 
   @override
@@ -139,9 +137,9 @@ class _ChatBoxState extends State<ChatBox> {
                                       }),
                               ),
                               TextBox(
-                                  message: _message,
-                                  textColor: _textColor,
-                                  now: now,
+                                message: _message,
+                                textColor: _textColor,
+                                now: now,
                               )
                             ],
                           )
@@ -242,78 +240,70 @@ class TextBox extends StatefulWidget {
 }
 
 class _TextBoxState extends State<TextBox> {
-  String url="";
+  String url = "";
 
   @override
   Widget build(BuildContext context) {
-
-
-    final matcher =  RegExp(
+    final matcher = RegExp(
         r"(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)");
 
-
-
-    if(matcher.stringMatch(widget._message)!=null)
-    {
+    if (matcher.stringMatch(widget._message) != null) {
       setState(() {
-        url=matcher.stringMatch(widget._message).toString();
+        url = matcher.stringMatch(widget._message).toString();
       });
     }
 
-
-
-    return url!=""?Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AnyLinkPreview(
-            link: url,
-          cache: const Duration(hours: 1),
-          displayDirection: UIDirection.uiDirectionHorizontal,
-          backgroundColor: Colors.white,
-          onTap: (){
-              launchUrl(Uri.parse(url));
-          },
-        ),
-        RichText(
-          text: TextSpan(
-            text: widget._message != "" ? "${widget._message}\n" : "\n",
-            style: TextStyle(
-              color: widget._textColor,
-              fontWeight: FontWeight.bold,
-            ),
-            children: <TextSpan>[
-              TextSpan(
-                  text:
-                      "${(widget.now.hour).toString().padLeft(2, "0")}:${(widget.now.minute).toString().padLeft(2, "0")}",
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    fontWeight: FontWeight.w500,
-                  )),
+    return url != ""
+        ? Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AnyLinkPreview(
+                link: url,
+                cache: const Duration(hours: 1),
+                displayDirection: UIDirection.uiDirectionHorizontal,
+                backgroundColor: Colors.white,
+                onTap: () {
+                  launchUrl(Uri.parse(url));
+                },
+              ),
+              RichText(
+                text: TextSpan(
+                  text: widget._message != "" ? "${widget._message}\n" : "\n",
+                  style: TextStyle(
+                    color: widget._textColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text:
+                            "${(widget.now.hour).toString().padLeft(2, "0")}:${(widget.now.minute).toString().padLeft(2, "0")}",
+                        style: const TextStyle(
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w500,
+                        )),
+                  ],
+                ),
+              ),
             ],
-          ),
-        ),
-      ],
-    ):
-    RichText(
-      text: TextSpan(
-        text: widget._message != "" ? "${widget._message}\n" : "\n",
-        style: TextStyle(
-          color: widget._textColor,
-          fontWeight: FontWeight.bold,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-              text:
-              "${(widget.now.hour).toString().padLeft(2, "0")}:${(widget.now.minute).toString().padLeft(2, "0")}",
-              style: const TextStyle(
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.w500,
-              )),
-        ],
-      ),
-    );
+          )
+        : RichText(
+            text: TextSpan(
+              text: widget._message != "" ? "${widget._message}\n" : "\n",
+              style: TextStyle(
+                color: widget._textColor,
+                fontWeight: FontWeight.bold,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                    text:
+                        "${(widget.now.hour).toString().padLeft(2, "0")}:${(widget.now.minute).toString().padLeft(2, "0")}",
+                    style: const TextStyle(
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.w500,
+                    )),
+              ],
+            ),
+          );
   }
 }
-
-
