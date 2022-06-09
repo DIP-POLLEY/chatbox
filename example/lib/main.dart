@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: Column(
+      body: ListView(
         children: const [
           ChatBox(
             message: "Hi",
@@ -64,6 +64,16 @@ class _MyHomePageState extends State<MyHomePage> {
             chatBoxColor: Colors.greenAccent,
             textColor: Colors.black,
           ),
+          ChatBox(
+            message: "https://pub.dev/packages/chatbox",
+            recieved: false,
+            chatBoxColor: Colors.greenAccent,
+            textColor: Colors.black,
+          ),
+
+          SizedBox(
+            height: 30,
+          )
         ],
       ),
     ));
