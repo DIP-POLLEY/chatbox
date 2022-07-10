@@ -12,6 +12,8 @@ class ChatBox extends StatefulWidget {
     required this.chatBoxColor,
     this.textColor = Colors.black,
     this.imageURL = "",
+    this.doculink = "",
+    required this.time,
   }) : super(key: key);
 
   final String message;
@@ -19,6 +21,8 @@ class ChatBox extends StatefulWidget {
   final Color chatBoxColor;
   final Color textColor;
   final String imageURL;
+  final String time;
+  final String doculink;
 
   @override
   State<ChatBox> createState() => _ChatBoxState();
@@ -30,6 +34,9 @@ class _ChatBoxState extends State<ChatBox> {
   Color _chatBoxColor = Colors.greenAccent;
   Color _textColor = Colors.greenAccent;
   String _imageURL = "";
+  String time = "";
+  String doculink = "";
+  String docuname = "";
   bool checknetwork = false;
 
   final now = DateTime.now();
@@ -71,10 +78,35 @@ class _ChatBoxState extends State<ChatBox> {
     _chatBoxColor = widget.chatBoxColor;
     _textColor = widget.textColor;
     _imageURL = widget.imageURL;
+    time = widget.time;
+    doculink = widget.doculink;
     if (_imageURL != "") {
       checkconnection();
     }
+    if (doculink != "") {
+      getname();
+    }
     verifyconditions();
+  }
+
+  void getname() {
+    var filename = doculink.split('/').last;
+    String s = "";
+    for (int i = 0; i < filename.length; i++) {
+      if (filename[i] == "?") {
+        break;
+      }
+      s = s + filename[i];
+    }
+    setState(() {
+      docuname = s;
+    });
+    // print(s);
+  }
+
+  Future openlink() async {
+    await launchUrl(Uri.parse(doculink));
+    //final taskid = await Flu
   }
 
   @override
@@ -99,54 +131,108 @@ class _ChatBoxState extends State<ChatBox> {
                     bottomRight: Radius.circular(10),
                   ),
                 ),
-                child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: _imageURL != ""
-                        ? Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(5),
-                                child: !checknetwork
-                                    ? Image.asset(
-                                        "packages/chatbox/assets/loading.gif",
-                                        height: 10,
-                                      )
-                                    : Image.network(_imageURL, loadingBuilder:
-                                        (BuildContext context, Widget child,
-                                            ImageChunkEvent? loadingProgress) {
-                                        if (loadingProgress == null) {
-                                          return child;
-                                        }
-                                        return SizedBox(
-                                          height: 100,
-                                          child: Center(
-                                            child: CircularProgressIndicator(
-                                              value: loadingProgress
-                                                          .expectedTotalBytes !=
-                                                      null
-                                                  ? loadingProgress
-                                                          .cumulativeBytesLoaded /
-                                                      loadingProgress
-                                                          .expectedTotalBytes!
-                                                  : null,
-                                            ),
-                                          ),
-                                        );
-                                      }),
+                child: doculink != ""
+                    ? Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black45.withOpacity(0.1),
+                                borderRadius: const BorderRadius.only(
+                                  topRight: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10),
+                                ),
                               ),
-                              TextBox(
+                              child: Row(
+                                children: [
+                                  const Expanded(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: Icon(
+                                        Icons.insert_drive_file_rounded,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 9,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Text(
+                                        docuname,
+                                        style: const TextStyle(fontSize: 15),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                time,
+                                textAlign: TextAlign.left,
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: _imageURL != ""
+                            ? Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(5),
+                                    child: !checknetwork
+                                        ? Image.asset(
+                                            "packages/chatbox/assets/loading.gif",
+                                            height: 10,
+                                          )
+                                        : Image.network(_imageURL,
+                                            loadingBuilder:
+                                                (BuildContext context,
+                                                    Widget child,
+                                                    ImageChunkEvent?
+                                                        loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            }
+                                            return SizedBox(
+                                              height: 100,
+                                              child: Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  value: loadingProgress
+                                                              .expectedTotalBytes !=
+                                                          null
+                                                      ? loadingProgress
+                                                              .cumulativeBytesLoaded /
+                                                          loadingProgress
+                                                              .expectedTotalBytes!
+                                                      : null,
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                  ),
+                                  TextBox(
+                                    message: _message,
+                                    textColor: _textColor,
+                                    time: time,
+                                  )
+                                ],
+                              )
+                            : TextBox(
                                 message: _message,
                                 textColor: _textColor,
-                                now: now,
-                              )
-                            ],
-                          )
-                        : TextBox(
-                            message: _message,
-                            textColor: _textColor,
-                            now: now)),
+                                time: time,
+                              )),
               ),
             ),
           )
@@ -168,53 +254,113 @@ class _ChatBoxState extends State<ChatBox> {
                     bottomRight: Radius.circular(10),
                   ),
                 ),
-                child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: _imageURL != ""
-                        ? Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(5),
-                                child: !checknetwork
-                                    ? Image.asset(
-                                        "packages/chatbox/assets/loading.gif",
-                                        height: 10,
-                                      )
-                                    : Image.network(_imageURL, loadingBuilder:
-                                        (BuildContext context, Widget child,
-                                            ImageChunkEvent? loadingProgress) {
-                                        if (loadingProgress == null) {
-                                          return child;
-                                        }
-                                        return SizedBox(
-                                          height: 100,
-                                          child: Center(
-                                            child: CircularProgressIndicator(
-                                              value: loadingProgress
-                                                          .expectedTotalBytes !=
-                                                      null
-                                                  ? loadingProgress
-                                                          .cumulativeBytesLoaded /
-                                                      loadingProgress
-                                                          .expectedTotalBytes!
-                                                  : null,
-                                            ),
-                                          ),
-                                        );
-                                      }),
+                child: doculink != ""
+                    ? Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                openlink();
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black45.withOpacity(0.1),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    const Expanded(
+                                      flex: 1,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Icon(
+                                          Icons.insert_drive_file_rounded,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 9,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Text(
+                                          docuname,
+                                          style: const TextStyle(fontSize: 15),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
-                              TextBox(
-                                  message: _message,
-                                  textColor: _textColor,
-                                  now: now)
-                            ],
-                          )
-                        : TextBox(
-                            message: _message,
-                            textColor: _textColor,
-                            now: now)),
+                            ),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: Text(
+                                time,
+                                textAlign: TextAlign.right,
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: _imageURL != ""
+                            ? Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(5),
+                                    child: !checknetwork
+                                        ? Image.asset(
+                                            "packages/chatbox/assets/loading.gif",
+                                            height: 10,
+                                          )
+                                        : Image.network(_imageURL,
+                                            loadingBuilder:
+                                                (BuildContext context,
+                                                    Widget child,
+                                                    ImageChunkEvent?
+                                                        loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            }
+                                            return SizedBox(
+                                              height: 100,
+                                              child: Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  value: loadingProgress
+                                                              .expectedTotalBytes !=
+                                                          null
+                                                      ? loadingProgress
+                                                              .cumulativeBytesLoaded /
+                                                          loadingProgress
+                                                              .expectedTotalBytes!
+                                                      : null,
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                  ),
+                                  TextBox(
+                                    message: _message,
+                                    textColor: _textColor,
+                                    time: time,
+                                  )
+                                ],
+                              )
+                            : TextBox(
+                                message: _message,
+                                textColor: _textColor,
+                                time: time,
+                              )),
               ),
             ),
           );
@@ -226,14 +372,14 @@ class TextBox extends StatefulWidget {
     Key? key,
     required String message,
     required Color textColor,
-    required this.now,
+    required this.time,
   })  : _message = message,
         _textColor = textColor,
         super(key: key);
 
   final String _message;
   final Color _textColor;
-  final DateTime now;
+  final String time;
 
   @override
   State<TextBox> createState() => _TextBoxState();
@@ -276,8 +422,8 @@ class _TextBoxState extends State<TextBox> {
                   ),
                   children: <TextSpan>[
                     TextSpan(
-                        text:
-                            "${(widget.now.hour).toString().padLeft(2, "0")}:${(widget.now.minute).toString().padLeft(2, "0")}",
+                        text: widget.time,
+                        //"${(widget.now.hour).toString().padLeft(2, "0")}:${(widget.now.minute).toString().padLeft(2, "0")}",
                         style: const TextStyle(
                           color: Colors.blueGrey,
                           fontWeight: FontWeight.w500,
@@ -296,8 +442,8 @@ class _TextBoxState extends State<TextBox> {
               ),
               children: <TextSpan>[
                 TextSpan(
-                    text:
-                        "${(widget.now.hour).toString().padLeft(2, "0")}:${(widget.now.minute).toString().padLeft(2, "0")}",
+                    text: widget.time,
+                    //"${(widget.now.hour).toString().padLeft(2, "0")}:${(widget.now.minute).toString().padLeft(2, "0")}",
                     style: const TextStyle(
                       color: Colors.blueGrey,
                       fontWeight: FontWeight.w500,

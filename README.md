@@ -20,6 +20,8 @@ Provides simple UI design for chat applications. Developers can focus more on th
 <img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img_2.png"/>
 <br>
 <img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img_3.png"/>
+<br>
+<img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img_4.png"/>
 
 ### Sending Message
 <img src="https://raw.githubusercontent.com/DIP-POLLEY/chatbox/main/img.png"/>
@@ -69,6 +71,16 @@ textColor: Colors.black,
 ),
 ```
 
+### Share Documents
+```dart
+ChatBox(
+doculink: "http://www.africau.edu/images/default/sample.pdf",
+recieved: false,
+chatBoxColor: Colors.greenAccent,
+textColor: Colors.black,
+time: "1:15",
+),
+```
 
 ## Additional information
 

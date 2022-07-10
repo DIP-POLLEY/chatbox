@@ -1,6 +1,6 @@
 name: chatbox
 description: Provides simple UI design so that Developers can focus more on the chat functionality rather than creating unique UI.
-version: 0.0.5
+version: 0.0.7
 homepage: https://github.com/DIP-POLLEY/chatbox
 
 environment:

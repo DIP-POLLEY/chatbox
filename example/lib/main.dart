@@ -42,12 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
             recieved: false,
             chatBoxColor: Colors.greenAccent,
             textColor: Colors.black,
+            time: "1:15",
           ),
           ChatBox(
             message: "Hello",
             recieved: true,
             chatBoxColor: Colors.greenAccent,
             textColor: Colors.black,
+            time: "1:15",
           ),
           ChatBox(
             message: "Now we can share images also",
@@ -55,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
             recieved: false,
             chatBoxColor: Colors.greenAccent,
             textColor: Colors.black,
+            time: "1:15",
           ),
           ChatBox(
             message: "Yes Gifs are supported now",
@@ -63,12 +66,29 @@ class _MyHomePageState extends State<MyHomePage> {
             recieved: true,
             chatBoxColor: Colors.greenAccent,
             textColor: Colors.black,
+            time: "1:15",
           ),
           ChatBox(
             message: "https://pub.dev/packages/chatbox",
             recieved: false,
             chatBoxColor: Colors.greenAccent,
             textColor: Colors.black,
+            time: "1:15",
+          ),
+          ChatBox(
+            doculink:
+                "https://firebasestorage.googleapis.com/v0/b/whatsapp-4a91a.appspot.com/o/loading.gif?alt=media&token=268c0d30-f552-4fb0-800d-0cb5506e24c5",
+            recieved: true,
+            chatBoxColor: Colors.greenAccent,
+            textColor: Colors.black,
+            time: "1:15",
+          ),
+          ChatBox(
+            doculink: "http://www.africau.edu/images/default/sample.pdf",
+            recieved: false,
+            chatBoxColor: Colors.greenAccent,
+            textColor: Colors.black,
+            time: "1:15",
           ),
           SizedBox(
             height: 30,

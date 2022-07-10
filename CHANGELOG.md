@@ -1,3 +1,7 @@
+## 0.0.7
+
+* Adding document sharing support
+
 ## 0.0.6
 
 * Adding hyperlink support
