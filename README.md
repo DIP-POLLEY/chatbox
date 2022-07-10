@@ -47,6 +47,7 @@ imageURL: "https://picsum.photos/250?image=9",//Sending GIF or Image
 recieved: false,
 chatBoxColor: Colors.greenAccent,
 textColor: Colors.black,
+time: "1:15",
 ),
 ```
 
@@ -58,6 +59,7 @@ imageURL:"https://docs.flutter.dev/assets/images/dash/dash-fainting.gif",//Recei
 recieved: true,
 chatBoxColor: Colors.greenAccent,
 textColor: Colors.black,
+time: "1:15",
 ),
 ```
 
@@ -68,6 +70,7 @@ message: "https://pub.dev/packages/chatbox",
 recieved: false,
 chatBoxColor: Colors.greenAccent,
 textColor: Colors.black,
+time: "1:15",
 ),
 ```
 
